@@ -20,7 +20,7 @@ services:
       - "~/awx_compose/environment.sh:/etc/tower/conf.d/environment.sh"
       - "~/awx_compose/credentials.py:/etc/tower/conf.d/credentials.py"
       - "~/awx_compose/nginx.conf:/etc/nginx/nginx.conf:ro"
-      - "~/awx_compose/redis_socket:/var/run/redis/:rw"
+      - redis_socket:/var/run/redis/
     environment:
       http_proxy:
       https_proxy:
@@ -44,7 +44,7 @@ services:
       - "~/awx_compose/SECRET_KEY:/etc/tower/SECRET_KEY"
       - "~/awx_compose/environment.sh:/etc/tower/conf.d/environment.sh"
       - "~/awx_compose/credentials.py:/etc/tower/conf.d/credentials.py"
-      - "~/awx_compose/redis_socket:/var/run/redis/:rw"
+      - redis_socket:/var/run/redis/
     environment:
       http_proxy:
       https_proxy:
@@ -62,7 +62,7 @@ services:
     command: ["/usr/local/etc/redis/redis.conf"]
     volumes:
       - "~/awx_compose/redis.conf:/usr/local/etc/redis/redis.conf:ro"
-      - "~/awx_compose/redis_socket:/var/run/redis/:rw"
+      - redis_socket:/var/run/redis/
 
   postgres:
     image: postgres:10
@@ -81,6 +81,7 @@ services:
 
 
 volumes:
+  redis_socket:
   pgdocker:
   awxasset:
   supervisor-socket:
