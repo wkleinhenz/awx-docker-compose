@@ -12,4 +12,6 @@ How to run:
 
 `chmod 0777 redis_socket`
 
+You may need to edit the docker-compose.yml to point the mount paths to your full directory path
+
 `sudo docker-compose up`
